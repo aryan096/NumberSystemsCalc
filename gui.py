@@ -1,4 +1,5 @@
 import tkinter as tk
+from operations import binary_hex, binary_octal, octal_binary, decimal_binary, hex_binary
 
 
 class Layout(tk.Frame):
@@ -53,4 +54,25 @@ class Layout(tk.Frame):
         self.reset_button.grid(rowspan=2, columnspan=2)
 
     def calculate(self,type):
-        self.current_type = type
+
+        if type==1:
+            self.octal_var.set(binary_octal(int(self.binary_var.get(), 2)))
+            self.decimal_var.set(int(self.binary_var.get(), 2))
+            self.hexadecimal_var.set(binary_hex(int(self.binary_var.get(), 2)))
+
+        elif type==2:
+            self.binary_var.set(octal_binary(int(self.octal_var.get(), 8)))
+            self.decimal_var.set(int(self.binary_var.get(), 2))
+            self.hexadecimal_var.set(binary_hex(int(self.binary_var.get(), 2)))
+
+        elif type==3:
+            self.binary_var.set(decimal_binary(int( self.decimal_var.get())))
+            self.octal_var.set(binary_octal(int(self.binary_var.get(), 2)))
+            self.hexadecimal_var.set(binary_hex(int(self.binary_var.get(), 2)))
+
+        elif type==4:
+            self.binary_var.set(hex_binary(int( self.hexadecimal_var.get(), 16)))
+            self.octal_var.set(binary_octal(int(self.binary_var.get(), 2)))
+            self.decimal_var.set(int(self.binary_var.get(), 2))
+
+        self.master.update_idletasks()
