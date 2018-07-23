@@ -9,7 +9,6 @@ def binary_octal(binary):
     return ans[2:]
 
 
-
 def octal_binary(octal):
     ans = bin(octal)
     return ans[2:]
