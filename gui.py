@@ -15,8 +15,6 @@ class Layout(tk.Frame):
         self.create_widgets()
 
 
-
-
     def create_widgets(self):
 
         # Labels

@@ -1,20 +1,25 @@
 
 def binary_hex(binary):
-    return hex(binary)
+    ans = hex(binary)
+    return ans[2:]
 
 
 def binary_octal(binary):
-    return oct(binary)
+    ans = oct(binary)
+    return ans[2:]
 
 
 
 def octal_binary(octal):
-    return bin(octal)
+    ans = bin(octal)
+    return ans[2:]
 
 
 def decimal_binary(decimal):
-    return bin(decimal)
+    ans = bin(decimal)
+    return ans[2:]
 
 
 def hex_binary(hex):
-    return bin(hex)
+    ans = bin(hex)
+    return ans[2:]
