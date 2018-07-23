@@ -10,6 +10,7 @@ class Layout(tk.Frame):
         self.octal_var = tk.StringVar()
         self.decimal_var = tk.StringVar()
         self.hexadecimal_var = tk.StringVar()
+        self.current_type = 0
         self.create_widgets()
 
 
@@ -37,6 +38,19 @@ class Layout(tk.Frame):
         self.hexadecimal_entry = tk.Entry(self, textvariable = self.hexadecimal_var, width = 30, justify = "center")
         self.hexadecimal_entry.grid(row=3, column=1)
 
+        # Checkbuttons
+        self.binary_button = tk.Button(self, width = 3, text="=", command = lambda: self.calculate(1))
+        self.binary_button.grid(row=0, column=2, sticky="W")
+        self.binary_button = tk.Button(self, width = 3, text="=", command = lambda: self.calculate(2))
+        self.binary_button.grid(row=1, column=2, sticky="W")
+        self.binary_button = tk.Button(self, width = 3, text="=", command = lambda: self.calculate(3))
+        self.binary_button.grid(row=2, column=2, sticky="W")
+        self.binary_button = tk.Button(self, width = 3, text="=", command = lambda: self.calculate(4))
+        self.binary_button.grid(row=3, column=2, sticky="W")
+
         # Calculate Button
-        self.calc_button = tk.Button(self, text = "Calculate", width=40)
-        self.calc_button.grid(row=4, columnspan=2)
+        self.reset_button = tk.Button(self, text = "Reset", width=40)
+        self.reset_button.grid(rowspan=2, columnspan=2)
+
+    def calculate(self,type):
+        self.current_type = type
