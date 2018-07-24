@@ -56,7 +56,7 @@ class Layout(tk.Frame):
         self.binary_button.grid(row=3, column=2, sticky="W")
 
         # Calculate Button
-        self.reset_button = tk.Button(self, text="Reset", width=40)
+        self.reset_button = tk.Button(self, text="Reset", width=40, command= lambda: self.calculate(5))
         self.reset_button.grid(rowspan=2, columnspan=2)
 
     def calculate(self, type):
@@ -81,5 +81,11 @@ class Layout(tk.Frame):
                 int(self.hexadecimal_var.get(), 16)))
             self.octal_var.set(binary_octal(int(self.binary_var.get(), 2)))
             self.decimal_var.set(int(self.binary_var.get(), 2))
+
+        elif type == 5:
+            self.binary_var.set(0)
+            self.octal_var.set(0)
+            self.decimal_var.set(0)
+            self.hexadecimal_var.set(0)
 
         self.master.update_idletasks()
