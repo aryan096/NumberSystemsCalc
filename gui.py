@@ -61,31 +61,40 @@ class Layout(tk.Frame):
 
     def calculate(self, type):
 
-        if type == 1:
-            self.octal_var.set(binary_octal(int(self.binary_var.get(), 2)))
-            self.decimal_var.set(int(self.binary_var.get(), 2))
-            self.hexadecimal_var.set(binary_hex(int(self.binary_var.get(), 2)))
+        try:
+            if type == 1:
+                self.octal_var.set(binary_octal(int(self.binary_var.get(), 2)))
+                self.decimal_var.set(int(self.binary_var.get(), 2))
+                self.hexadecimal_var.set(binary_hex(int(self.binary_var.get(), 2)))
 
-        elif type == 2:
-            self.binary_var.set(octal_binary(int(self.octal_var.get(), 8)))
-            self.decimal_var.set(int(self.binary_var.get(), 2))
-            self.hexadecimal_var.set(binary_hex(int(self.binary_var.get(), 2)))
+            elif type == 2:
+                self.binary_var.set(octal_binary(int(self.octal_var.get(), 8)))
+                self.decimal_var.set(int(self.binary_var.get(), 2))
+                self.hexadecimal_var.set(binary_hex(int(self.binary_var.get(), 2)))
 
-        elif type == 3:
-            self.binary_var.set(decimal_binary(int(self.decimal_var.get())))
-            self.octal_var.set(binary_octal(int(self.binary_var.get(), 2)))
-            self.hexadecimal_var.set(binary_hex(int(self.binary_var.get(), 2)))
+            elif type == 3:
+                self.binary_var.set(decimal_binary(int(self.decimal_var.get())))
+                self.octal_var.set(binary_octal(int(self.binary_var.get(), 2)))
+                self.hexadecimal_var.set(binary_hex(int(self.binary_var.get(), 2)))
 
-        elif type == 4:
-            self.binary_var.set(hex_binary(
-                int(self.hexadecimal_var.get(), 16)))
-            self.octal_var.set(binary_octal(int(self.binary_var.get(), 2)))
-            self.decimal_var.set(int(self.binary_var.get(), 2))
+            elif type == 4:
+                self.binary_var.set(hex_binary(
+                    int(self.hexadecimal_var.get(), 16)))
+                self.octal_var.set(binary_octal(int(self.binary_var.get(), 2)))
+                self.decimal_var.set(int(self.binary_var.get(), 2))
 
-        elif type == 5:
-            self.binary_var.set(0)
-            self.octal_var.set(0)
-            self.decimal_var.set(0)
-            self.hexadecimal_var.set(0)
+            elif type == 5:
+                self.binary_var.set(0)
+                self.octal_var.set(0)
+                self.decimal_var.set(0)
+                self.hexadecimal_var.set(0)
+
+        except ValueError:
+            self.binary_var.set("Invalid Input!")
+            self.octal_var.set("Invalid Input!")
+            self.decimal_var.set("Invalid Input!")
+            self.hexadecimal_var.set("Invalid Input!")
+
+
 
         self.master.update_idletasks()
